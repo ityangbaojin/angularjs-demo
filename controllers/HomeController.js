@@ -14,7 +14,7 @@ app.controller('HomeController', function($scope) {
 
     // 删除
     $scope.del = function(id) {
-        if (confirm('您确定要删除吗?')) {
+        if (confirm('Are you sure you want to delete?')) {
             angular.forEach($scope.users, function(value, key) {
                 if (value.id == id) {
                     $scope.users.splice(key, 1);
