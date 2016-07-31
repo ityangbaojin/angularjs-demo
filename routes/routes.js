@@ -1,14 +1,46 @@
-app.config(['$routeProvider', function($routeProvider){
-    $routeProvider
-        .when('/home', {
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('home');
+    $stateProvider
+        .state('home', {
+            url : '/home',
             templateUrl : 'views/home.html',
-            controller  : 'HomeController'
+            controller : 'HomeController',
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'app',
+                        files: [
+                            'controllers/HomeController.js'
+                        ]
+                    });
+                }]
+            }
         })
-        .when('/about', {
-            template : 'This is About...'
+
+
+        .state('about', {
+            url: '/about',
+            templateUrl: 'views/about.html',
+            controller: 'AboutController',
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'app',
+                        files: [
+                            'controllers/AboutController.js'
+                        ]
+                    })
+                }]
+            }
         })
-        .otherwise({
-            // redirectTo : '/home'
-            template : 'Welcome...'
-        });
+
+        .state('blog', {
+            url : '/blog',
+            template : '<h3>ityangbaojin.github.io</h3>'
+        })
 }]);
+
+// 页面加载运行
+app.run(function($rootScope) {
+    // TODO
+});
