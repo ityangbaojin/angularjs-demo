@@ -1,1 +1,1 @@
-# Angularjs  route demo
+# Angularjs ui-router ocLazyLoad demo
