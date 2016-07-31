@@ -1,4 +1,4 @@
 # Angularjs ui-router ocLazyLoad demo
 
 ### effect
-![](./doc/effect.png)
+![](./doc/effect.gif)
