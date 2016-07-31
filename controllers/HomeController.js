@@ -1,8 +1,8 @@
 app.controller('HomeController', function($scope) {
     $scope.users = [
-        {'id' : 1, 'name' : '小明', 'sex' : 1, 'age' : 26},
-        {'id' : 2, 'name' : '小红', 'sex' : 0, 'age' : 27},
-        {'id' : 3, 'name' : '小绿', 'sex' : 1, 'age' : 28}
+        {'id' : 1, 'name' : 'small5', 'sex' : 1, 'age' : 26},
+        {'id' : 2, 'name' : 'small6', 'sex' : 0, 'age' : 27},
+        {'id' : 3, 'name' : 'small7', 'sex' : 1, 'age' : 28}
     ];
     // 添加
     $scope.add = function() {
