@@ -4,13 +4,15 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         .state('home', {
             url : '/home',
             templateUrl : 'views/home.html',
+            data: {pageTitle: 'Home'},
             controller : 'HomeController',
             resolve: {
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'app',
                         files: [
-                            'controllers/HomeController.js'
+                            'controllers/HomeController.js',
+                            'service/HomeService.js'
                         ]
                     });
                 }]
@@ -21,6 +23,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         .state('about', {
             url: '/about',
             templateUrl: 'views/about.html',
+            data: {pageTitle: 'About'},
             controller: 'AboutController',
             resolve: {
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -36,11 +39,13 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
         .state('blog', {
             url : '/blog',
-            template : '<h3>ityangbaojin.github.io</h3>'
+            template : '<h3>ityangbaojin.github.io</h3>',
+            data: {pageTitle: 'Blog'},
         })
 }]);
 
 // 页面加载运行
-app.run(function($rootScope) {
+app.run(function($rootScope, $state) {
+    $rootScope.$state = $state;
     // TODO
 });
