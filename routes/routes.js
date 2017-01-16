@@ -42,6 +42,24 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             template : '<h3>ityangbaojin.github.io</h3>',
             data: {pageTitle: 'Blog'},
         })
+
+        .state('up', {
+            url: '/up',
+            templateUrl: 'views/up.html',
+            data: {pageTitle: 'Up'},
+            controller: 'UpController',
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'app',
+                        files: [
+                            'controllers/UpController.js',
+                            'assets/layout.css'
+                        ]
+                    })
+                }]
+            }
+        })
 }]);
 
 // 页面加载运行
